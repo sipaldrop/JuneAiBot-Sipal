@@ -25,7 +25,7 @@
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/sipal-airdrop/JuneAiBot-Sipal.git
+git clone https://github.com/sipaldrop/JuneAiBot-Sipal.git
 cd JuneAiBot-Sipal
 ```
 
@@ -34,51 +34,45 @@ cd JuneAiBot-Sipal
 npm install
 ```
 
-3. **Configure accounts**
+3. **Prepare Configuration**
+Copy the template file to create your configuration:
 ```bash
 cp accounts_tmp.json accounts.json
 ```
-Edit `accounts.json` with your credentials:
+*(On Windows, you can just manually copy and rename the file)*
+
+4. **Configure Groq API (Optional but Recommended)**
+Open `accounts.json` and add your Groq API keys to the `groqApiKey` array. This improves the AI's ability to generate unique questions.
 ```json
-[
-  {
-    "name": "Account-1",
-    "session_id": "YOUR_SESSION_ID",
-    "cookie": "YOUR_FULL_COOKIE_STRING",
-    "groqApiKey": ["YOUR_GROQ_KEY"],
-    "proxy": ""
-  }
-]
+{
+  "groqApiKey": [
+    "gsk_your_key_here",
+    "gsk_another_key_optional"
+  ],
+  "accounts": [ ... ]
+}
 ```
 
-4. **Get Session & Cookie** (Multi-Profile Support)
+5. **Get Session & Cookie (Automatic)**
+Run the session grabber tool to log in and save your session automatically.
    
-   This tool uses persistent Chrome Profiles, so you stay logged in!
-   
-   - **Specific Account** (e.g. Account 1):
-     ```bash
-     node grab_session.js 1
-     ```
-   - **Run All Accounts** (Sequential):
-     ```bash
-     node grab_session.js --all
-     ```
+- **For a single account (e.g., Account 1):**
+  ```bash
+  node grab_session.js 1
+  ```
+- **For all accounts sequentially:**
+  ```bash
+  node grab_session.js --all
+  ```
 
-   Login to `askjune.ai` in the window. Once logged in, the window closes automatically and saves the session. Next time, just run it again to refresh cookies without re-typing password!
+**Instructions:**
+- A Chrome window will open.
+- Log in to your AskJune account.
+- Once logged in, the tool will automatically detect your session, save it to `accounts.json`, and close the browser.
+- **Note:** This session is saved permanently in `browser_profiles/`, so you don't need to log in again unless your session expires.
 
-5. **Configure Groq Keys**
-   Open `accounts.json` and add your keys to the `groqApiKey` array at the top:
-   ```json
-   {
-     "groqApiKey": [
-       "YOUR_GROQ_KEY_1",
-       "YOUR_GROQ_KEY_2"
-     ],
-     "accounts": [ ... ]
-   }
-   ```
-
-6. **Run the bot**
+6. **Run the Bot**
+Start the main bot:
 ```bash
 node index.js
 ```
