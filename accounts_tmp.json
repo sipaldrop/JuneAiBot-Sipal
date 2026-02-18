@@ -1,0 +1,14 @@
+{
+    "groqApiKey": [
+        "YOUR_GROQ_KEY_1",
+        "YOUR_GROQ_KEY_2"
+    ],
+    "accounts": [
+        {
+            "name": "Account-1",
+            "session_id": "YOUR_SESSION_ID",
+            "cookie": "YOUR_FULL_COOKIE_STRING",
+            "proxy": ""
+        }
+    ]
+}
